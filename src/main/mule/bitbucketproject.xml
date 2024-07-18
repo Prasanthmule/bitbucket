@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="345c63b7-d045-4080-afb8-450d50604fc1" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="bitbucketprojectFlow" doc:id="76501404-6d65-47f5-af22-87bdd42ed725" >
+		<http:listener doc:name="Listener" doc:id="8529a513-565e-4ea6-8314-4c648e05d056" config-ref="HTTP_Listener_config" path="/bitbucket"/>
+		<logger level="INFO" doc:name="Logger" doc:id="9bc7699b-705f-4803-bf24-8ff6403e8d82" message="#[payload]"/>
+	</flow>
+</mule>
